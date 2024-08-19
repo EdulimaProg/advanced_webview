@@ -1,0 +1,85 @@
+name: advanced_webview
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  get: ^4.6.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+
+#icons_launcher:
+#  image_path: "assets/ic_logo_border.png"
+#  platforms:
+#    android:
+#      enable: true
+#      image_path: "assets/ic_logo_border.png"
+#      # adaptive_background_color: '#ffffff'
+#      adaptive_background_image: "assets/ic_background.png"
+#      adaptive_foreground_image: "assets/ic_foreground.png"
+#      adaptive_round_image: "assets/ic_logo_round.png"
+#      adaptive_monochrome_image: "assets/ic_logo_monochrome.png"
+#    ios:
+#      enable: true
+#      image_path: "assets/ic_logo_rectangle.png"
+#    web:
+#      enable: true
+#      image_path: "assets/ic_logo_border.png"
+#      favicon_path: "assets/ic_logo_round.png"
+#    macos:
+#      enable: false
+#      image_path: "assets/ic_logo_border.png"
+#    windows:
+#      enable: false
+#      image_path: "assets/ic_logo_border.png"
+#    linux:
+#      enable: false
+#      image_path: "assets/ic_logo_border.png"
+
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages

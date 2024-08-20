@@ -1,19 +1,18 @@
+import 'package:advanced_webview/homepage/errors/error_page.dart';
 import 'package:advanced_webview/homepage/home_page.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
-    );
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
+    await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
   }
-}
 
+  runApp(const GetMaterialApp(
+    home: HomePage(),
+  ));
+}

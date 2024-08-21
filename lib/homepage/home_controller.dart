@@ -25,12 +25,19 @@ class HomeController extends GetxController {
   void onInit() {
     pullRefreshController = PullToRefreshController(
       settings: PullToRefreshSettings(
-        color: Colors.blue
+        color: Colors.blue,
       ),
-      onRefresh: () async => webViewController?.loadUrl(
-          urlRequest:
-          URLRequest(url: await webViewController?.getUrl())
-    ));
+      onRefresh: () async {
+        if (defaultTargetPlatform == TargetPlatform.android) {
+          webViewController?.reload();
+        } else if (defaultTargetPlatform == TargetPlatform.iOS ||
+            defaultTargetPlatform == TargetPlatform.macOS) {
+          webViewController?.loadUrl(
+              urlRequest:
+              URLRequest(url: await webViewController?.getUrl()));
+        }
+      },
+    );;
 
 
     super.onInit();

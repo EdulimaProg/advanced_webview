@@ -5,14 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
     await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
   }
 
-  runApp(const GetMaterialApp(
-    home: HomePage(),
-  ));
+  runApp(
+    const GetMaterialApp(
+      home: HomePage(),
+      debugShowCheckedModeBanner: false,
+    ),
+  );
 }

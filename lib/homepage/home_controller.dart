@@ -37,9 +37,7 @@ class HomeController extends GetxController {
               URLRequest(url: await webViewController?.getUrl()));
         }
       },
-    );;
-
-
+    );
     super.onInit();
   }
 

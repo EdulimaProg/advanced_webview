@@ -53,7 +53,7 @@ post_install do |installer|
 
         ## dart: PermissionGroup.microphone
         'PERMISSION_MICROPHONE=1',
-
+        ]
     end
   end
 end

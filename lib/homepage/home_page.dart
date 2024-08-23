@@ -15,14 +15,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: InAppWebView(
+        child: Obx(() => !_controller.loading.value ? const Center(child: CircularProgressIndicator()) : InAppWebView(
           key: _controller.webViewKey,
           initialUrlRequest: _controller.url,
           initialSettings: _controller.settings,
           pullToRefreshController: _controller.pullRefreshController,
-          onWebViewCreated: (_) => print(""),
-          onPermissionRequest: _controller.webViewCreated,
-        ),
+          onWebViewCreated: (_) => _controller.onWebViewCreated,
+          onPermissionRequest: _controller.requestPermission,
+        ),),
       ),
     );
   }

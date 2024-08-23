@@ -26,6 +26,7 @@ class HomeController extends GetxController {
         color: Colors.blue,
       ),
       onRefresh: () async {
+        loading.value = true;
         if (defaultTargetPlatform == TargetPlatform.android) {
           webViewController?.reload();
         } else if (defaultTargetPlatform == TargetPlatform.iOS) {
@@ -33,9 +34,17 @@ class HomeController extends GetxController {
               urlRequest:
               URLRequest(url: await webViewController?.getUrl()));
         }
+        loading.value = false;
       },
+
+
     );
     super.onInit();
+  }
+  onWebViewCreated(controller, url){
+    print("criado");
+    webViewController = controller;
+    loading.value = false;
   }
 
   Future onRefresh() async {
@@ -48,7 +57,7 @@ class HomeController extends GetxController {
     }
   }
 
-  Future<PermissionResponse> webViewCreated(controller, request) async {
+  Future<PermissionResponse> requestPermission(controller, request) async {
     return PermissionResponse(
         resources: request.resources, action: PermissionResponseAction.GRANT);
   }

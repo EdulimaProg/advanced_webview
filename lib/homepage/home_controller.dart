@@ -9,7 +9,7 @@ class HomeController extends GetxController {
   InAppWebViewController? webViewController;
   PullToRefreshController? pullRefreshController;
   URLRequest url = URLRequest(url: WebUri("https://firds.com.br/"));
-  var loading = false.obs;
+  var loading = true.obs;
 
   InAppWebViewSettings settings = InAppWebViewSettings(
     isInspectable: kDebugMode,
@@ -19,19 +19,16 @@ class HomeController extends GetxController {
     iframeAllowFullscreen: true,
   );
 
-
-
   @override
   void onInit() {
-    pullRefreshController = PullToRefreshController(
+    PullToRefreshController(
       settings: PullToRefreshSettings(
         color: Colors.blue,
       ),
       onRefresh: () async {
         if (defaultTargetPlatform == TargetPlatform.android) {
           webViewController?.reload();
-        } else if (defaultTargetPlatform == TargetPlatform.iOS ||
-            defaultTargetPlatform == TargetPlatform.macOS) {
+        } else if (defaultTargetPlatform == TargetPlatform.iOS) {
           webViewController?.loadUrl(
               urlRequest:
               URLRequest(url: await webViewController?.getUrl()));
@@ -41,9 +38,18 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
+  Future onRefresh() async {
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      webViewController?.reload();
+    } else if (defaultTargetPlatform == TargetPlatform.iOS ||
+        defaultTargetPlatform == TargetPlatform.macOS) {
+      webViewController?.loadUrl(
+          urlRequest: URLRequest(url: await webViewController?.getUrl()));
+    }
+  }
+
   Future<PermissionResponse> webViewCreated(controller, request) async {
     return PermissionResponse(
-        resources: request.resources,
-        action: PermissionResponseAction.GRANT);
+        resources: request.resources, action: PermissionResponseAction.GRANT);
   }
 }

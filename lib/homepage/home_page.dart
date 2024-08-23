@@ -15,9 +15,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: _controller.webViewController?.isLoading() == true
-            ? const Center(child: CircularProgressIndicator())
-            : InAppWebView(
+        child: InAppWebView(
           key: _controller.webViewKey,
           initialUrlRequest: _controller.url,
           initialSettings: _controller.settings,
